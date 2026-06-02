@@ -1,10 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import InteractiveCard from './InteractiveCard';
 
 const skillCategories = [
   {
     title: "Backend Development",
-    skills: ["Node.js", "Python", "Express.js", , "RESTful APIs","Authentication & Authorization"]
+    skills: ["Node.js", "Python", "Express.js", "RESTful APIs", "Authentication & Authorization"]
   },
   {
     title: "Mobile Development",
@@ -16,11 +17,11 @@ const skillCategories = [
   },
   {
     title: "Cyber Security",
-    skills: ["Penetration Testing", "Cryptography", "Network Security",  "Linux/Unix"]
+    skills: ["Penetration Testing", "Cryptography", "Network Security", "Linux/Unix"]
   },
   {
     title: "Tools & DevOps",
-    skills: ["Git & GitHub", "Docker",  "AWS (Basic)"]
+    skills: ["Git & GitHub", "Docker", "AWS (Basic)"]
   }
 ];
 
@@ -40,23 +41,26 @@ export default function Skills() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {skillCategories.map((category, idx) => (
-            <motion.div 
+            <motion.div
               key={idx}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
-              className="glass-card p-6 hover:border-primary/30 transition-colors"
             >
-              <h3 className="text-xl font-semibold text-white mb-6 font-mono">{category.title}</h3>
-              <ul className="space-y-3">
-                {category.skills.map((skill, sIdx) => (
-                  <li key={sIdx} className="flex items-center gap-3 text-gray-400">
-                    <span className="w-1.5 h-1.5 rounded-full bg-primary"></span>
-                    {skill}
-                  </li>
-                ))}
-              </ul>
+              <InteractiveCard className="rounded-2xl">
+                <div className="glass-card p-6 hover:border-primary/30 transition-colors h-full">
+                  <h3 className="text-xl font-semibold text-white mb-6 font-mono">{category.title}</h3>
+                  <ul className="space-y-3">
+                    {category.skills.map((skill, sIdx) => (
+                      <li key={sIdx} className="flex items-center gap-3 text-gray-400">
+                        <span className="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                        {skill}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </InteractiveCard>
             </motion.div>
           ))}
         </div>
