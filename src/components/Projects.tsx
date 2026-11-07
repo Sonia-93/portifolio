@@ -130,65 +130,6 @@ export default function Projects() {
           ))}
         </div>
 
-        {/* Coming Soon */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mt-24"
-        >
-          <div className="flex items-center gap-3 mb-10">
-            <Clock className="w-5 h-5 text-accent" />
-            <h3 className="text-2xl font-bold text-white">Coming <span className="text-primary">Soon</span></h3>
-            <div className="flex-1 h-px bg-gradient-to-r from-primary/40 to-transparent ml-2"></div>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-6">
-            {comingSoon.map((project, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, x: idx % 2 === 0 ? -20 : 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.15 }}
-                className="relative overflow-hidden rounded-2xl border border-white/10 bg-dark-800/50 p-8 group"
-              >
-                <div className={`absolute -top-10 -right-10 w-40 h-40 rounded-full blur-3xl opacity-20 group-hover:opacity-40 transition-opacity duration-500 ${project.color === 'yellow' ? 'bg-yellow-400' : 'bg-orange-400'}`}></div>
-
-                <div className="relative z-10 flex items-start gap-5">
-                  <div className={`p-3 rounded-xl border ${project.color === 'yellow' ? 'bg-yellow-400/10 border-yellow-400/20' : 'bg-orange-400/10 border-orange-400/20'}`}>
-                    {project.icon}
-                  </div>
-                  <div className="flex-1">
-                    <div className="flex items-center gap-3">
-                      <h4 className="text-lg font-bold text-white">{project.title}</h4>
-                      <span className="flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-mono border border-primary/30 text-primary bg-primary/10">
-                        <Lock className="w-3 h-3" /> In Development
-                      </span>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="relative z-10 mt-6">
-                  <div className="flex justify-between text-xs text-gray-500 font-mono mb-1.5">
-                    <span>Progress</span>
-                    <span>{project.progress}%</span>
-                  </div>
-                  <div className="w-full h-1.5 bg-dark-700 rounded-full overflow-hidden">
-                    <motion.div
-                      initial={{ width: 0 }}
-                      whileInView={{ width: `${project.progress}%` }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 1, delay: 0.3 }}
-                      className={`h-full rounded-full ${project.color === 'yellow' ? 'bg-yellow-400' : 'bg-orange-400'}`}
-                    />
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
-
       </div>
     </section>
   );

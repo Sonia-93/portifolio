@@ -1,12 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Code2, Lock, TerminalSquare, Smartphone } from 'lucide-react';
+import { profileImg } from '../images';
 
 export default function About() {
   return (
     <section id="about" className="py-24 relative">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -17,7 +17,8 @@ export default function About() {
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-12 items-center">
-          <motion.div 
+          {/* Left — text */}
+          <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -34,40 +35,24 @@ export default function About() {
             </p>
           </motion.div>
 
-          <motion.div 
+          {/* Right — profile photo */}
+          <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="grid gap-6"
+            className="flex items-center justify-center"
           >
-            <div className="glass-card p-6 flex gap-4">
-              <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
-                <Code2 className="w-6 h-6 text-primary" />
+            <div className="relative w-72 h-72 md:w-96 md:h-96">
+              <div className="absolute inset-0 rounded-full border border-primary/30 animate-[spin_6s_linear_infinite]"></div>
+              <div className="absolute inset-4 rounded-full border border-accent/20 animate-[spin_10s_linear_infinite_reverse]"></div>
+              <div className="absolute inset-8 rounded-full overflow-hidden border-2 border-dark-700 bg-dark-800 group">
+                <img
+                  src={profileImg}
+                  alt="Shimirwa Teta Sonia"
+                  className="w-full h-full object-cover transition-all duration-700 grayscale group-hover:grayscale-0"
+                />
               </div>
-              <div>
-                <h3 className="text-lg font-semibold text-white mb-2">Backend Engineering</h3>
-                <p className="text-sm text-gray-400">Designing RESTful APIs, managing databases, and ensuring high performance and responsiveness to requests from the front-end.</p>
-              </div>
-            </div>
-
-            <div className="glass-card p-6 flex gap-4">
-              <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center shrink-0">
-                <Lock className="w-6 h-6 text-accent" />
-              </div>
-              <div>
-                <h3 className="text-lg font-semibold text-white mb-2">Cyber Security</h3>
-                <p className="text-sm text-gray-400">Vulnerability assessment, penetration testing, secure coding practices, and understanding modern threat landscapes.</p>
-              </div>
-            </div>
-
-            <div className="glass-card p-6 flex gap-4">
-              <div className="w-12 h-12 rounded-lg bg-blue-500/10 flex items-center justify-center shrink-0">
-                <TerminalSquare className="w-6 h-6 text-blue-400" />
-              </div>
-              <div>
-                <h3 className="text-lg font-semibold text-white mb-2">Rwanda Coding Academy</h3>
-                <p className="text-sm text-gray-400">Rigorous training in software engineering, embedded systems, and cyber security, preparing for world-class tech challenges.</p>
-              </div>
+              <div className="absolute inset-0 rounded-full bg-primary/5 blur-2xl"></div>
             </div>
           </motion.div>
         </div>
